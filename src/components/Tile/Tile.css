@@ -1,0 +1,184 @@
+/* Tile styling with polished visuals, typography, and responsive scaling */
+
+.tile {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  font-weight: 800;
+  user-select: none;
+  font-family: var(--font-sans, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
+  font-variant-numeric: tabular-nums;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  transition: transform 0.1s ease;
+  letter-spacing: -0.02em;
+}
+
+/* Animations for newly spawned and merged tiles */
+@keyframes tileSpawn {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  65% {
+    transform: scale(1.12);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes tileMerge {
+  0% {
+    transform: scale(1);
+  }
+  45% {
+    transform: scale(1.16);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes tile2048Pulse {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(237, 194, 46, 0.6), inset 0 0 8px rgba(255, 255, 255, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(237, 194, 46, 0.85), inset 0 0 14px rgba(255, 255, 255, 0.5);
+  }
+}
+
+.tile-new {
+  animation: tileSpawn 0.18s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.tile-merged {
+  animation: tileMerge 0.18s ease-in-out forwards;
+}
+
+/* Font sizes tuned for multi-digit readability across all screen sizes */
+.tile-digits-1,
+.tile-digits-2 {
+  font-size: clamp(1.5rem, 6vw, 2.35rem);
+}
+
+.tile-digits-3 {
+  font-size: clamp(1.2rem, 4.8vw, 1.85rem);
+}
+
+.tile-digits-4 {
+  font-size: clamp(0.95rem, 3.8vw, 1.45rem);
+}
+
+.tile-digits-5 {
+  font-size: clamp(0.75rem, 3vw, 1.15rem);
+}
+
+/* Value Color Palettes (Rich, polished contrast) */
+.tile-val-2 {
+  background-color: #eee4da;
+  color: #776e65;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 2px 4px rgba(0, 0, 0, 0.06);
+}
+
+.tile-val-4 {
+  background-color: #ede0c8;
+  color: #776e65;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 2px 4px rgba(0, 0, 0, 0.06);
+}
+
+.tile-val-8 {
+  background-color: #f2b179;
+  color: #ffffff;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
+}
+
+.tile-val-16 {
+  background-color: #f59563;
+  color: #ffffff;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
+}
+
+.tile-val-32 {
+  background-color: #f67c5f;
+  color: #ffffff;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
+}
+
+.tile-val-64 {
+  background-color: #f65e3b;
+  color: #ffffff;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.tile-val-128 {
+  background-color: #edcf72;
+  color: #ffffff;
+  box-shadow: 0 0 10px rgba(237, 207, 114, 0.35);
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.tile-val-256 {
+  background-color: #edcc61;
+  color: #ffffff;
+  box-shadow: 0 0 12px rgba(237, 204, 97, 0.4);
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.tile-val-512 {
+  background-color: #edc850;
+  color: #ffffff;
+  box-shadow: 0 0 14px rgba(237, 200, 80, 0.45);
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.tile-val-1024 {
+  background-color: #edc53f;
+  color: #ffffff;
+  box-shadow: 0 0 16px rgba(237, 197, 63, 0.5);
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
+}
+
+.tile-val-2048 {
+  background-color: #edc22e;
+  color: #ffffff;
+  box-shadow: 0 0 20px rgba(237, 194, 46, 0.6), inset 0 0 8px rgba(255, 255, 255, 0.3);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  animation: tile2048Pulse 2.5s infinite ease-in-out;
+}
+
+.tile-val-super {
+  background-color: #3c3a32;
+  color: #ffffff;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+/* Dark mode adjustments */
+@media (prefers-color-scheme: dark) {
+  .tile-val-2 {
+    background-color: #383a48;
+    color: #e2e8f0;
+  }
+
+  .tile-val-4 {
+    background-color: #424658;
+    color: #f1f5f9;
+  }
+}
+
+/* Accessibility: Respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .tile,
+  .tile-new,
+  .tile-merged,
+  .tile-val-2048 {
+    animation: none !important;
+    transition: none !important;
+  }
+}
